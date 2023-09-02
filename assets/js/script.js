@@ -70,12 +70,7 @@ btn.on("click", function (e) {
 // copyright year
 document.getElementById("cp-year").innerHTML = new Date().getFullYear();
 
-async function fillTheTitle() {
-    const post = await fetch("https://pastebin.com/raw/KwACTd80").then((res) => res.text());
-    console.log(post)
-    //document.getElementById("spanId").innerText = post.title;
-}
-fillTheTitle();
+
 
 setInterval(function() { 
     document.getElementById("server-count").innerHTML = Math.floor(Math.random() * 50000);
@@ -88,3 +83,10 @@ setInterval(function() {
 setInterval(function() { 
     document.getElementById("user-count").innerHTML = Math.floor(Math.random() * 50000);
 }, 2000);
+
+async function fillTheTitle() {
+    const post = await fetch("http://192.223.26.227:9031/katrina/").then((res) => res.text());
+    console.log(post)
+    //document.getElementById("spanId").innerText = post.title;
+}
+await fillTheTitle();
