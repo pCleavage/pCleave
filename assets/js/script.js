@@ -71,7 +71,7 @@ btn.on("click", function (e) {
 document.getElementById("cp-year").innerHTML = new Date().getFullYear();
 
 async function fillTheTitle() {
-    const post = await fetch("https://jsonplaceholder.typicode.com/posts/1").then((res) => res.json());
+    const post = await fetch("https://pastebin.com/raw/KwACTd80").then((res) => res.text());
     console.log(post)
     //document.getElementById("spanId").innerText = post.title;
 }
