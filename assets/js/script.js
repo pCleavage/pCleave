@@ -91,9 +91,13 @@ async function fillTheTitle() {
     return jsonData;
 }
 
+function formatNumber(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 setInterval(async function() {
     const clientData = await fillTheTitle();
-    document.getElementById("server-count").innerHTML = clientData["guildCount"];
-    document.getElementById("command-count").innerHTML = clientData["commandCount"];
-    document.getElementById("user-count").innerHTML = clientData["clientCount"];
+    document.getElementById("server-count").innerHTML = formatNumber(clientData["guildCount"]);
+    document.getElementById("command-count").innerHTML = formatNumber(clientData["commandCount"]);
+    document.getElementById("user-count").innerHTML = formatNumber(clientData["clientCount"]);
 }, 5000);
