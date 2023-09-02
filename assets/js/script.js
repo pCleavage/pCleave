@@ -71,20 +71,23 @@ btn.on("click", function (e) {
 document.getElementById("cp-year").innerHTML = new Date().getFullYear();
 
 async function fillTheTitle() {
+    responseData = await fetch("https://corsproxy.io/?https://pastebin.com/raw/KwACTd80", {
+        headers : {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    });
 
-    return await fetch(
-        "https://corsproxy.io/?https://pastebin.com/raw/KwACTd80"
-    ).then(res => res.json());
+    jsonData = await responseData.json();
 
-    //const post = await fetch("https://corsproxy.io/?https://pastebin.com/raw/KwACTd80").then((res) => res.text()).then((text) => {
-    //    return text
-    //});
-    //console.log(post)
+    console.log(jsonData);
+    console.log(jsonData["guildCount"])
+    return jsonData;
 }
 
 setInterval(function() {
-    var clientData = fillTheTitle();
+    const clientData = fillTheTitle();
     document.getElementById("server-count").innerHTML = clientData["guildCount"];
     document.getElementById("command-count").innerHTML = clientData["commandCount"];
-    document.getElementById("user-count").innerHTML = clientData["47002"];
+    document.getElementById("user-count").innerHTML = clientData["clientCount"];
 }, 5000);
