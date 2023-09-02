@@ -70,26 +70,21 @@ btn.on("click", function (e) {
 // copyright year
 document.getElementById("cp-year").innerHTML = new Date().getFullYear();
 
-
 async function fillTheTitle() {
-    const post = await fetch("https://corsproxy.io/?https://pastebin.com/raw/KwACTd80").then((res) => res.text()).then((text) => {
-        return text
-    });
-    console.log(post)
+
+    return await fetch(
+        "https://corsproxy.io/?https://pastebin.com/raw/KwACTd80"
+    ).then(res => res.json());
+
+    //const post = await fetch("https://corsproxy.io/?https://pastebin.com/raw/KwACTd80").then((res) => res.text()).then((text) => {
+    //    return text
+    //});
+    //console.log(post)
 }
 
-
 setInterval(function() {
-    var a = fillTheTitle();
-    document.getElementById("server-count").innerHTML = a;//Math.floor(Math.random() * 50000);
-}, 5000);
-
-setInterval(function() { 
-    var a = fillTheTitle();
-    document.getElementById("command-count").innerHTML = a;//Math.floor(Math.random() * 50000);
-}, 5000);
-
-setInterval(function() { 
-    var a = fillTheTitle();
-    document.getElementById("user-count").innerHTML = a;//Math.floor(Math.random() * 50000);
+    var clientData = fillTheTitle();
+    document.getElementById("server-count").innerHTML = clientData["guildCount"];
+    document.getElementById("command-count").innerHTML = clientData["commandCount"];
+    document.getElementById("user-count").innerHTML = clientData["47002"];
 }, 5000);
