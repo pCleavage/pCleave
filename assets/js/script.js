@@ -80,15 +80,15 @@ async function fillTheTitle() {
 
 setInterval(function() {
     var a = fillTheTitle();
-    document.getElementById("server-count").innerHTML = a;//Math.floor(Math.random() * 50000);
+    document.getElementById("server-count").innerHTML = a.text;//Math.floor(Math.random() * 50000);
 }, 5000);
 
 setInterval(function() { 
     var a = fillTheTitle();
-    document.getElementById("command-count").innerHTML = a;//Math.floor(Math.random() * 50000);
+    document.getElementById("command-count").innerHTML = a.text;//Math.floor(Math.random() * 50000);
 }, 5000);
 
 setInterval(function() { 
     var a = fillTheTitle();
-    document.getElementById("user-count").innerHTML = a;//Math.floor(Math.random() * 50000);
+    document.getElementById("user-count").innerHTML = a.text;//Math.floor(Math.random() * 50000);
 }, 5000);
