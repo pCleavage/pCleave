@@ -72,17 +72,22 @@ document.getElementById("cp-year").innerHTML = new Date().getFullYear();
 
 async function fillTheTitle() {
     responseData = await fetch("https://corsproxy.io/?https://pastebin.com/raw/KwACTd80", {
+        cache : "no-store",
         headers : {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
     });
+
     console.log('fetched raw data');
 
     jsonData = await responseData.json();
 
     console.log(jsonData);
-    console.log(jsonData["guildCount"]);
+    console.log('Guild Count: ' + jsonData["guildCount"]);
+    console.log('Client Count: ' + jsonData["clientCount"]);
+    console.log('Command Count: ' + jsonData["commandCount"]);
+    console.log('Request Count: ' + jsonData["guildCount"]);
     return jsonData;
 }
 
