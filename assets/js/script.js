@@ -53,6 +53,7 @@ $(function () {
 
 // back to top
 var btn = $("#backtotop");
+const GIST_ID = "5e2600ba70c380222f601412e6328d0a"
 
 $(window).scroll(function () {
     if ($(window).scrollTop() > 100) {
@@ -71,7 +72,7 @@ btn.on("click", function (e) {
 document.getElementById("cp-year").innerHTML = new Date().getFullYear();
 
 async function fillTheTitle() {
-    responseData = await fetch("https://corsproxy.io/?https://pastebin.com/raw/KwACTd80", {
+    responseData = await fetch("https://corsproxy.io/?https://api.github.com/gists/" + GIST_ID, {
         cache : "no-store",
         headers : {
             'Content-Type': 'application/json',
@@ -79,16 +80,16 @@ async function fillTheTitle() {
         }
     });
 
-    console.log('fetched raw data');
+    //console.log('fetched raw data');
 
     jsonData = await responseData.json();
 
-    console.log(jsonData);
-    console.log('Guild Count: ' + jsonData["guildCount"]);
-    console.log('Client Count: ' + jsonData["clientCount"]);
-    console.log('Command Count: ' + jsonData["commandCount"]);
-    console.log('Request Count: ' + jsonData["requestsServiced"]);
-    return jsonData;
+    //console.log(jsonData);
+    //console.log('Guild Count: ' + jsonData["guildCount"]);
+    //console.log('Client Count: ' + jsonData["clientCount"]);
+    //console.log('Command Count: ' + jsonData["commandCount"]);
+    //console.log('Request Count: ' + jsonData["requestsServiced"]);
+    return jsonData["files"]["data.json"]["content"].json();
 }
 
 function formatNumber(x) {
@@ -97,7 +98,7 @@ function formatNumber(x) {
 
 setInterval(async function() {
     const clientData = await fillTheTitle();
-    document.getElementById("server-count").innerHTML = formatNumber(clientData["guildCount"]);
-    document.getElementById("command-count").innerHTML = formatNumber(clientData["commandCount"]);
-    document.getElementById("user-count").innerHTML = formatNumber(clientData["clientCount"]);
+    document.getElementById("server-count").innerHTML = formatNumber(clientData["Guilds"]);
+    document.getElementById("command-count").innerHTML = formatNumber(clientData["Commands"]);
+    document.getElementById("user-count").innerHTML = formatNumber(clientData["Clients"]);
 }, 5000);
