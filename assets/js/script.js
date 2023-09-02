@@ -71,22 +71,24 @@ btn.on("click", function (e) {
 document.getElementById("cp-year").innerHTML = new Date().getFullYear();
 
 
-
-setInterval(function() { 
-    document.getElementById("server-count").innerHTML = Math.floor(Math.random() * 50000);
-}, 2000);
-
-setInterval(function() { 
-    document.getElementById("command-count").innerHTML = Math.floor(Math.random() * 50000);
-}, 2000);
-
-setInterval(function() { 
-    document.getElementById("user-count").innerHTML = Math.floor(Math.random() * 50000);
-}, 2000);
-
 async function fillTheTitle() {
-    const post = await fetch("http://192.223.26.227:9031/katrina/").then((res) => res.text());
+    const post = await fetch("https://cors-anywhere.herokuapp.com/https://pastebin.com/raw/KwACTd80").then((res) => res.text());
     console.log(post)
-    //document.getElementById("spanId").innerText = post.title;
+    return post;
 }
-await fillTheTitle();
+
+
+setInterval(function() {
+    var a = fillTheTitle();
+    document.getElementById("server-count").innerHTML = a;//Math.floor(Math.random() * 50000);
+}, 5000);
+
+setInterval(function() { 
+    var a = fillTheTitle();
+    document.getElementById("command-count").innerHTML = a;//Math.floor(Math.random() * 50000);
+}, 5000);
+
+setInterval(function() { 
+    var a = fillTheTitle();
+    document.getElementById("user-count").innerHTML = a;//Math.floor(Math.random() * 50000);
+}, 5000);
