@@ -87,7 +87,7 @@ async function fillTheTitle() {
     console.log('Guild Count: ' + jsonData["guildCount"]);
     console.log('Client Count: ' + jsonData["clientCount"]);
     console.log('Command Count: ' + jsonData["commandCount"]);
-    console.log('Request Count: ' + jsonData["guildCount"]);
+    console.log('Request Count: ' + jsonData["requestsServiced"]);
     return jsonData;
 }
 
