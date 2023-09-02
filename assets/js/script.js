@@ -72,7 +72,7 @@ document.getElementById("cp-year").innerHTML = new Date().getFullYear();
 
 
 async function fillTheTitle() {
-    const post = await fetch("https://thingproxy.freeboard.io/fetch/https://pastebin.com/raw/KwACTd80").then((res) => res.text());
+    const post = await fetch("https://corsproxy.io/?https://pastebin.com/raw/KwACTd80").then((res) => res.text());
     console.log(post)
     return post;
 }
