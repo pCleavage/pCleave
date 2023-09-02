@@ -77,16 +77,17 @@ async function fillTheTitle() {
             'Accept': 'application/json'
         }
     });
+    console.log('fetched raw data');
 
     jsonData = await responseData.json();
 
     console.log(jsonData);
-    console.log(jsonData["guildCount"])
+    console.log(jsonData["guildCount"]);
     return jsonData;
 }
 
-setInterval(function() {
-    const clientData = fillTheTitle();
+setInterval(async function() {
+    const clientData = await fillTheTitle();
     document.getElementById("server-count").innerHTML = clientData["guildCount"];
     document.getElementById("command-count").innerHTML = clientData["commandCount"];
     document.getElementById("user-count").innerHTML = clientData["clientCount"];
