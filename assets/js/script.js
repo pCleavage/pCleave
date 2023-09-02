@@ -70,6 +70,13 @@ btn.on("click", function (e) {
 // copyright year
 document.getElementById("cp-year").innerHTML = new Date().getFullYear();
 
+async function fillTheTitle() {
+    const post = await fetch("https://jsonplaceholder.typicode.com/posts/1").then((res) => res.json());
+    console.log(post)
+    //document.getElementById("spanId").innerText = post.title;
+}
+fillTheTitle();
+
 setInterval(function() { 
     document.getElementById("server-count").innerHTML = Math.floor(Math.random() * 50000);
 }, 2000);
