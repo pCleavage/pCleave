@@ -89,7 +89,8 @@ async function fillTheTitle() {
     //console.log('Client Count: ' + jsonData["clientCount"]);
     //console.log('Command Count: ' + jsonData["commandCount"]);
     //console.log('Request Count: ' + jsonData["requestsServiced"]);
-    return jsonData["files"]["data.json"]["content"].json();
+    const GIST_CONTENT = JSON.parse(jsonData["files"]["data.json"]["content"]);
+    return GIST_CONTENT;
 }
 
 function formatNumber(x) {
